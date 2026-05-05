@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 92" role="img" aria-labelledby="title">
+  <title id="title">MELBET</title>
+  <rect width="380" height="92" rx="20" fill="#080807"/>
+  <path d="M29 64V28h17l12 20 12-20h17v36H70V47L60 64h-5L45 47v17H29Zm72 0V28h47v13h-30v5h27v12h-27v6h31v0h-48Zm61 0V28h17v22h29v14h-46Zm58 0V28h32c10 0 17 5 17 14 0 5-2 9-7 11 6 2 10 7 10 13 0 10-8 16-20 16h-32Zm17-23v7h12c3 0 5-1 5-4 0-2-2-3-5-3h-12Zm0 18v8h14c4 0 6-1 6-4s-2-4-6-4h-14Zm51 5V28h47v13h-30v5h27v12h-27v6h31v0h-48Zm62 0V42h-20V28h57v14h-20v22h-17Z" fill="#FFC100"/>
+  <path d="M20 78h340" stroke="#FFC100" stroke-opacity=".22" stroke-width="2"/>
+</svg>
