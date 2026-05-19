@@ -152,6 +152,7 @@ export type Card = {
   metric?: string;
   tone?: CardTone;
   chips?: string[];
+  iconTags?: IconTag[];
   points?: string[];
   footnote?: string;
   media?: MediaItem;
