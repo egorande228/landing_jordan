@@ -6,7 +6,9 @@ import type {
   MediaRatio,
   MediaVariant,
   MediaVideo,
+  SectionContent,
 } from "@/types/landing";
+import { CASINO_REF_LINK, MAIL_LINK, SPORT_REF_LINK, TELEGRAM_LINK } from "@/lib/links";
 
 function placeholder(
   slot: string,
@@ -106,6 +108,13 @@ const esportsTacticalMarks = [esportsMarks[3]] as const;
 const esportsMobaMarks = [esportsMarks[1]] as const;
 const esportsNightMarks = [esportsMarks[0]] as const;
 
+function withHref<T extends SectionContent>(section: T, href: string): T {
+  return {
+    ...section,
+    cards: section.cards?.map((card) => ({ ...card, href })),
+  };
+}
+
 export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
   ar: {
     seo: {
@@ -159,8 +168,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
         body: "تابع كرة القدم أولاً، ثم افتح السولتات، اللايف كازينو، والألعاب السريعة من نفس المسار. كل ما تحتاجه للعب السريع يبقى قريباً على الهاتف.",
         chips: ["رياضة مباشرة", "كازينو جاهز", "عروض للاعبين"],
         media: heroVisual,
-        cta: { label: "اختر لعبتك", href: "#games", variant: "primary" },
-        secondaryCta: { label: "شاهد العروض", href: "#offers", variant: "secondary" },
+        cta: { label: "اختر لعبتك", href: CASINO_REF_LINK, variant: "primary" },
+        secondaryCta: { label: "شاهد العروض", href: CASINO_REF_LINK, variant: "secondary" },
         stats: [
           {
             eyebrow: "كرة القدم",
@@ -188,7 +197,7 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
           },
         ],
       },
-      games: {
+      games: withHref({
         eyebrow: "الكازينو",
         title: "اختر اللعبة التي تناسب مزاجك الليلة",
         body: "ادخل إلى السولتات، اللايف كازينو، الألعاب السريعة، أو الطاولات الكلاسيكية، واختر الإيقاع الذي يناسبك من أول لمسة.",
@@ -235,8 +244,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "dark",
           },
         ],
-      },
-      sports: {
+      }, CASINO_REF_LINK),
+      sports: withHref({
         eyebrow: "الرياضة",
         title: "تابع المباراة التي تهمك، وأبقِ باقي الرياضات في متناولك",
         body: "ابدأ بكرة القدم، ثم انتقل إلى التنس وكرة السلة والمواجهات المباشرة من دون أن تضيع النتيجة.",
@@ -271,8 +280,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "red",
           },
         ],
-      },
-      esports: {
+      }, SPORT_REF_LINK),
+      esports: withHref({
         eyebrow: "الرياضات الإلكترونية",
         title: "أبقِ بطولات الليل ومواجهات الإي سبورت قريبة منك",
         body: "خرائط سريعة، سلاسل أطول، وعلامات ألعاب مألوفة عندما تريد منافسة جديدة بعد المباريات.",
@@ -304,8 +313,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "sand",
           },
         ],
-      },
-      offers: {
+      }, SPORT_REF_LINK),
+      offers: withHref({
         eyebrow: "العروض",
         title: "عروض اللاعبين تبقى جاهزة عندما تفتح الحملة",
         body: "عروض ترحيب، رهانات مجانية، لفات مجانية، وهدايا موسمية بصياغة واضحة وشروط تبقى قريبة من كل حملة.",
@@ -339,13 +348,13 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "red",
           },
         ],
-      },
+      }, CASINO_REF_LINK),
       finalCta: {
         eyebrow: "جاهز للخطوة التالية؟",
         title: "اختر لعبتك، راقب العرض، أو افتح طريق العمل",
         body: "ابدأ بالرياضة أو الكازينو، راجع الأسئلة الشائعة إذا أردت إجابات سريعة، وانتقل إلى الشراكة إذا كنت تريد تحويل جمهورك أو شبكتك إلى فرصة عمل.",
         chips: ["رياضة", "كازينو", "فرصة عمل"],
-        cta: { label: "اختر لعبتك", href: "#games", variant: "primary" },
+        cta: { label: "اختر لعبتك", href: CASINO_REF_LINK, variant: "primary" },
         secondaryCta: { label: "افتح الشراكة", href: "/partnership", variant: "secondary" },
       },
     },
@@ -517,17 +526,15 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
         chips: ["جمهور أو قناة", "مدينة أو منطقة", "شريك أو وكيل"],
         cta: {
           label: "تحدث عبر تيليجرام",
-          href: "https://telegram.org/",
+          href: TELEGRAM_LINK,
           variant: "primary",
           iconSrc: "/telegram.png",
           iconAlt: "Telegram",
         },
         secondaryCta: {
-          label: "تحدث عبر واتساب",
-          href: "https://www.whatsapp.com/",
+          label: "تواصل عبر الإيميل",
+          href: MAIL_LINK,
           variant: "secondary",
-          iconSrc: "/whatsapp.png",
-          iconAlt: "WhatsApp",
         },
       },
     },
@@ -580,7 +587,7 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
         eyebrow: "اختر خطوتك الآن",
         title: "العب أولاً أو افتح طريق العمل",
         body: "اتجه إلى الألعاب إذا كنت تريد البدء كلاعب، أو افتح الشراكة إذا كنت تريد تحويل جمهورك أو شبكتك إلى فرصة عمل.",
-        cta: { label: "اختر لعبتك", href: "/#games", variant: "primary" },
+        cta: { label: "اختر لعبتك", href: CASINO_REF_LINK, variant: "primary" },
       },
     },
   },
@@ -636,8 +643,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
         body: "Follow live football first, then move into slots, live casino, and quick games from the same mobile flow. Everything you need for a faster night stays within easy reach.",
         chips: ["Live sports", "Casino games", "Player offers"],
         media: heroVisual,
-        cta: { label: "Choose your game", href: "#games", variant: "primary" },
-        secondaryCta: { label: "See offers", href: "#offers", variant: "secondary" },
+        cta: { label: "Choose your game", href: CASINO_REF_LINK, variant: "primary" },
+        secondaryCta: { label: "See offers", href: CASINO_REF_LINK, variant: "secondary" },
         stats: [
           {
             eyebrow: "Football",
@@ -665,7 +672,7 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
           },
         ],
       },
-      games: {
+      games: withHref({
         eyebrow: "Casino",
         title: "Choose the game that fits your mood tonight",
         body: "Jump into slots, live casino, fast games, or classic tables and keep the pace that suits you from the first tap.",
@@ -712,8 +719,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "dark",
           },
         ],
-      },
-      sports: {
+      }, CASINO_REF_LINK),
+      sports: withHref({
         eyebrow: "Sports",
         title: "Follow the match that matters and keep the rest within reach",
         body: "Start with football, then jump to tennis, basketball, and live competition without losing the score.",
@@ -748,8 +755,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "red",
           },
         ],
-      },
-      esports: {
+      }, SPORT_REF_LINK),
+      esports: withHref({
         eyebrow: "Esports",
         title: "Keep late-night esports close to the main action",
         body: "Fast maps, longer series, and familiar titles stay close when you want fresh competition after the main fixtures.",
@@ -781,8 +788,8 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "sand",
           },
         ],
-      },
-      offers: {
+      }, SPORT_REF_LINK),
+      offers: withHref({
         eyebrow: "Offers",
         title: "Player offers worth checking when the campaign goes live",
         body: "Welcome bonuses, free bets, free spins, and seasonal gifts stay easy to spot, with the terms kept close to each campaign.",
@@ -816,13 +823,13 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
             tone: "red",
           },
         ],
-      },
+      }, CASINO_REF_LINK),
       finalCta: {
         eyebrow: "Ready for the next move?",
         title: "Choose your game, check the offer, or open the work route",
         body: "Start with sports or casino, check the FAQ if you want quick answers, or open Partnership if you want to turn your audience or local network into work.",
         chips: ["Sports", "Casino", "Work route"],
-        cta: { label: "Choose your game", href: "#games", variant: "primary" },
+        cta: { label: "Choose your game", href: CASINO_REF_LINK, variant: "primary" },
         secondaryCta: { label: "Open Partnership", href: "/partnership", variant: "secondary" },
       },
     },
@@ -994,17 +1001,15 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
         chips: ["Audience or channel", "City or area", "Partner or agent"],
         cta: {
           label: "Talk on Telegram",
-          href: "https://telegram.org/",
+          href: TELEGRAM_LINK,
           variant: "primary",
           iconSrc: "/telegram.png",
           iconAlt: "Telegram",
         },
         secondaryCta: {
-          label: "Talk on WhatsApp",
-          href: "https://www.whatsapp.com/",
+          label: "Mail",
+          href: MAIL_LINK,
           variant: "secondary",
-          iconSrc: "/whatsapp.png",
-          iconAlt: "WhatsApp",
         },
       },
     },
@@ -1057,7 +1062,7 @@ export const jordanContent: Record<"ar" | "en", LocalizedMarketContent> = {
         eyebrow: "Choose the next step",
         title: "Play first or open the work route",
         body: "Go to the games if you want to start as a player, or open Partnership if you want to turn your audience or network into work.",
-        cta: { label: "Choose your game", href: "/#games", variant: "primary" },
+        cta: { label: "Choose your game", href: CASINO_REF_LINK, variant: "primary" },
       },
     },
   },

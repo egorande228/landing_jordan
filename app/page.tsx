@@ -4,16 +4,10 @@ import { HomePage } from "@/components/pages/HomePage";
 import { jordanContent } from "@/content/markets/jordan";
 import { jordanConfig } from "@/config/jordan";
 import { buildPageMetadata } from "@/lib/metadata";
-import { resolveLocale } from "@/lib/locale";
 
-type PageProps = {
-  searchParams?: Promise<{ lang?: string }> | { lang?: string };
-};
+const locale = jordanConfig.defaultLocale;
 
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const params = await searchParams;
-  const locale = resolveLocale(params?.lang, jordanConfig);
-
+export function generateMetadata(): Metadata {
   return buildPageMetadata({
     content: jordanContent[locale],
     locale,
@@ -22,9 +16,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   });
 }
 
-export default async function JordanHome({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const locale = resolveLocale(params?.lang, jordanConfig);
+export default function JordanHome() {
   const content = jordanContent[locale];
 
   return (

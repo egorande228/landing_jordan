@@ -166,7 +166,13 @@ export function HomePage({
         <SectionIntro section={content.sports} />
         {sportsCards.length ? (
           <div className="sports-layout">
-            <article className={`surface-card sports-main-card sports-visual-frame tone-${sportsLead?.tone ?? "green"}`} data-reveal="scale">
+            <a
+              className={`surface-card sports-main-card sports-visual-frame tone-${sportsLead?.tone ?? "green"}`}
+              data-reveal="scale"
+              href={sportsLead?.href}
+              rel={sportsLead?.href ? "noopener noreferrer" : undefined}
+              target={sportsLead?.href ? "_blank" : undefined}
+            >
               <div className="card-orb" aria-hidden="true" />
               {content.sports.media ? <MediaPlaceholder media={content.sports.media} tone={sportsLead?.tone ?? "green"} className="sports-main-media" /> : null}
               {sportsLead?.metric ? (
@@ -191,11 +197,18 @@ export function HomePage({
                   ) : null}
                 </>
               ) : null}
-            </article>
+            </a>
             {sportsSideCards.length ? (
               <div className="sports-side-stack">
                 {sportsSideCards.map((card) => (
-                  <article className={`surface-card sports-side-card tone-${card.tone ?? "dark"}`} key={card.title} data-reveal>
+                  <a
+                    className={`surface-card sports-side-card tone-${card.tone ?? "dark"}`}
+                    href={card.href}
+                    key={card.title}
+                    data-reveal
+                    rel={card.href ? "noopener noreferrer" : undefined}
+                    target={card.href ? "_blank" : undefined}
+                  >
                     <div className="card-orb" aria-hidden="true" />
                     {card.metric ? (
                       <div className="card-topline">
@@ -215,7 +228,7 @@ export function HomePage({
                         ))}
                       </ul>
                     ) : null}
-                  </article>
+                  </a>
                 ))}
               </div>
             ) : null}

@@ -147,6 +147,7 @@ export type MediaItem = MediaPlaceholder | MediaAsset | MediaVideo;
 export type Card = {
   title: string;
   body: string;
+  href?: string;
   label?: string;
   eyebrow?: string;
   metric?: string;

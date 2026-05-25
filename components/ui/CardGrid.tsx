@@ -11,12 +11,18 @@ export function CardGrid({ cards, variant = "standard" }: { cards?: Card[]; vari
         const revealMode = variant === "media" || variant === "stats" ? "scale" : variant === "steps" ? (index % 2 === 0 ? "left" : "right") : "up";
         const primaryIcon = card.iconTags?.[0];
 
+        const CardTag = card.href ? "a" : "article";
+        const isExternal = card.href ? /^(?:[a-z]+:|\/\/)/i.test(card.href) : false;
+
         return (
-          <article
+          <CardTag
             className={`surface-card tone-${card.tone ?? "dark"}${card.media ? " has-media" : ""}${card.points?.length ? " has-points" : ""}${primaryIcon ? " has-inline-icon" : ""}`}
+            href={card.href}
             key={`${card.title}-${index}`}
             data-reveal={revealMode}
             data-reveal-order={index}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            target={isExternal ? "_blank" : undefined}
           >
             <div className="card-orb" aria-hidden="true" />
             {card.metric ? (
@@ -46,7 +52,7 @@ export function CardGrid({ cards, variant = "standard" }: { cards?: Card[]; vari
               </ul>
             ) : null}
             {card.footnote ? <p className="card-footnote">{card.footnote}</p> : null}
-          </article>
+          </CardTag>
         );
       })}
     </div>
