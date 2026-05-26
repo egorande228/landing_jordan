@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { MarketPageShell } from "@/components/layout/MarketPageShell";
-import { PartnershipPage } from "@/components/pages/PartnershipPage";
+import { Suspense } from "react";
 import { jordanContent } from "@/content/markets/jordan";
 import { jordanConfig } from "@/config/jordan";
 import { buildPageMetadata } from "@/lib/metadata";
-
-const locale = jordanConfig.defaultLocale;
+import { JordanPartnershipClient } from "./JordanPartnershipClient";
 
 export function generateMetadata(): Metadata {
+  const locale = jordanConfig.defaultLocale;
+
   return buildPageMetadata({
     content: jordanContent[locale],
     locale,
@@ -17,11 +17,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default function JordanPartnership() {
-  const content = jordanContent[locale];
-
   return (
-    <MarketPageShell locale={locale} config={jordanConfig} content={content} activePage="partnership">
-      <PartnershipPage content={content.partnership} config={jordanConfig} locale={locale} />
-    </MarketPageShell>
+    <Suspense fallback={null}>
+      <JordanPartnershipClient />
+    </Suspense>
   );
 }

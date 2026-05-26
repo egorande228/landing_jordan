@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { MarketPageShell } from "@/components/layout/MarketPageShell";
-import { FaqPage } from "@/components/pages/FaqPage";
+import { Suspense } from "react";
 import { jordanContent } from "@/content/markets/jordan";
 import { jordanConfig } from "@/config/jordan";
 import { buildPageMetadata } from "@/lib/metadata";
-
-const locale = jordanConfig.defaultLocale;
+import { JordanFaqClient } from "./JordanFaqClient";
 
 export function generateMetadata(): Metadata {
+  const locale = jordanConfig.defaultLocale;
+
   return buildPageMetadata({
     content: jordanContent[locale],
     locale,
@@ -17,11 +17,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default function JordanFaq() {
-  const content = jordanContent[locale];
-
   return (
-    <MarketPageShell locale={locale} config={jordanConfig} content={content} activePage="faq">
-      <FaqPage content={content.faq} config={jordanConfig} locale={locale} />
-    </MarketPageShell>
+    <Suspense fallback={null}>
+      <JordanFaqClient />
+    </Suspense>
   );
 }
