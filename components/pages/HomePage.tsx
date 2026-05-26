@@ -7,6 +7,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { CardGrid } from "@/components/ui/CardGrid";
 import { MediaPlaceholder } from "@/components/ui/MediaPlaceholder";
+import { MAIL_LINK, TELEGRAM_LINK } from "@/lib/links";
 import type { Locale, LocalizedMarketContent, MarketConfig } from "@/types/landing";
 
 export function HomePage({
@@ -58,6 +59,27 @@ export function HomePage({
           <div className="cta-row">
             {content.hero.cta ? <CtaLink cta={content.hero.cta} locale={locale} /> : null}
             {content.hero.secondaryCta ? <CtaLink cta={content.hero.secondaryCta} locale={locale} /> : null}
+          </div>
+          <div className="mt-5 w-full max-w-[360px] rounded-[18px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/48">
+              For partnership contact
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={TELEGRAM_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.06] px-4 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/[0.09]"
+              >
+                Telegram
+              </a>
+              <a
+                href={MAIL_LINK}
+                className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.06] px-4 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/[0.09]"
+              >
+                Mail
+              </a>
+            </div>
           </div>
         </div>
         <div className="hero-stage hero-stage-home" data-reveal="right">
