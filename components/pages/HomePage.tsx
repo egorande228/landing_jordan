@@ -60,22 +60,80 @@ export function HomePage({
             {content.hero.cta ? <CtaLink cta={content.hero.cta} locale={locale} /> : null}
             {content.hero.secondaryCta ? <CtaLink cta={content.hero.secondaryCta} locale={locale} /> : null}
           </div>
-          <div className="mt-5 w-full max-w-[360px] rounded-[18px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/48">
+          <div
+            className="hero-contact-panel"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              marginTop: "20px",
+              width: "100%",
+              maxWidth: "420px",
+            }}
+          >
+            <p
+              className="hero-contact-label"
+              style={{
+                margin: 0,
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                lineHeight: 1.35,
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.62)",
+              }}
+            >
               For partnership contact
             </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div
+              className="hero-contact-actions"
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px",
+              }}
+            >
               <a
                 href={TELEGRAM_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.06] px-4 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/[0.09]"
+                className="hero-contact-button"
+                style={{
+                  alignItems: "center",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.14)",
+                  borderRadius: "999px",
+                  color: "#fff",
+                  display: "inline-flex",
+                  flex: "1 1 150px",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  justifyContent: "center",
+                  minHeight: "44px",
+                  padding: "0 20px",
+                  textDecoration: "none",
+                }}
               >
                 Telegram
               </a>
               <a
                 href={MAIL_LINK}
-                className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.06] px-4 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/[0.09]"
+                className="hero-contact-button"
+                style={{
+                  alignItems: "center",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.14)",
+                  borderRadius: "999px",
+                  color: "#fff",
+                  display: "inline-flex",
+                  flex: "1 1 150px",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  justifyContent: "center",
+                  minHeight: "44px",
+                  padding: "0 20px",
+                  textDecoration: "none",
+                }}
               >
                 Mail
               </a>
